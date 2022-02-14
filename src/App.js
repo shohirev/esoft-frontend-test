@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const tasks = getDatabase();
     dispatch(initDatabase(tasks));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='app-container'>
