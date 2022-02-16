@@ -4,11 +4,6 @@ body {
   background: #E5CCFF;
 }
 
-/*.app-container {
-  height: 100vh;
-  
-}*/
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -26,7 +21,15 @@ body {
 
   width: 100%;
   padding: 20px;
-  /*height: 90%;*/
+}
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+
+  margin-bottom: 10px;
 }
 
 .output-toggle {
@@ -56,4 +59,11 @@ body {
 
 form button {
   margin-right: 10px;
+}
+
+@media (min-width: 770px) {
+  .filter-panel {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

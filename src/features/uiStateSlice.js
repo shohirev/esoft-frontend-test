@@ -5,6 +5,8 @@ const initialState = {
   outputOrder: 'addingOrder',
   filteredBy: {
     status: null,
+    name: '',
+    executionDate: '',
   },
 };
 

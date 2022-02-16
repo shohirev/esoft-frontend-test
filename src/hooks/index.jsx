@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux';
 import { selectTasks } from '../features/tasksSlice';
 import { selectFilter } from '../features/uiStateSlice';
 
-const filterByStatus = (tasks, filterKey) => {
-  switch(filterKey) {
+const filterByStatus = (tasks, taskStatus) => {
+  switch(taskStatus) {
     case 'onlyActive':
       return tasks.filter((task) => task.isCompleted === false);
     case 'onlyCompleted':
@@ -13,9 +13,18 @@ const filterByStatus = (tasks, filterKey) => {
   }
 };
 
+const filterByName = (tasks, name) => tasks.filter((task) => task.name.includes(name));
+
+const filterByExecutionDate = (tasks, date) => {
+  if (date !== '') {
+    
+    return tasks.filter((task) => task.expiration === date);
+  }
+  return tasks;
+};
+
 const useFilter = () => {
   const tasks = useSelector(selectTasks);
-  //console.log('before filter', tasks)
   const filter = useSelector(selectFilter);
   const filterParams = Object.entries(filter);
 
@@ -27,11 +36,15 @@ const useFilter = () => {
     if (attribute === 'status') {
       filteredTasks = filterByStatus(acc, key);
     }
+    if (attribute === 'name') {
+      filteredTasks = filterByName(acc, key);
+    }
+    if (attribute === 'executionDate') {
+      filteredTasks = filterByExecutionDate(acc, key);
+    }
 
     return filteredTasks;
   }, [...tasks]);
-
-  //console.log('after filter', tasks)
 
   return filteredTasks;
 };

@@ -16,12 +16,14 @@ const FilterByStatus = () => {
   };
 
   return (
-      // Фильтрация задач по статусу:
+    <label>
+      <p>по статусу задачи:</p>
       <select className='filter-by-status' onChange={handler}>
         <option value={'all'}>все задачи</option>
         <option value='onlyActive'>только активные</option>
         <option value='onlyCompleted'>только завершенные</option>
       </select>
+    </label>
   );
 };
 

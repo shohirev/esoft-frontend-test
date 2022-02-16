@@ -11,12 +11,14 @@ const OutputToggle = () => {
   };
 
   return (
-      // Сортировка задач:
-      <select className='output-toggle' onChange={handler}>
+    <label className='output-toggle'>
+      <p>упорядочить задачи:</p>
+      <select onChange={handler}>
         <option value='addingOrder'>по дате создания</option>
         <option value='name'>по названию</option>
         <option value='beginning'>по дате начала</option>
       </select>
+    </label>
   );
 };
 

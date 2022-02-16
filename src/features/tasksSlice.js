@@ -13,7 +13,7 @@ export const tasksSlice = createSlice({
     },
     addTask: (state, action) => {
       const newTask = action.payload;
-      newTask.id = state.length + 1;
+      newTask.id = Math.floor(Math.random() * 1000);
       state.push(newTask);
       setDatabase(state);
     },
