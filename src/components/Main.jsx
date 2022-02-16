@@ -22,7 +22,7 @@ const Main = () => {
   }
 
   return (
-    <div className='mainBoard'>
+    <div >
       {currentContent}
     </div>
   );

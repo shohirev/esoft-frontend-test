@@ -14,13 +14,16 @@ body {
   height: 10vh;
 }
 
-.mainBoard {
+.app-container {
+  padding: 20px;
+}
+
+.main-board {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   width: 100%;
-  padding: 20px;
 }
 
 .filter-panel {

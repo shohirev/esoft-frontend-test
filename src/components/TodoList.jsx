@@ -20,7 +20,10 @@ const TodoList = () => {
 
   if (tasks.length === 0) {
     return (
-      <p>Задачи отсутствуют</p>
+      <div>
+        <FilterPanel />
+        <p>Задачи отсутствуют</p>
+      </div>
     );
   }
 
@@ -48,7 +51,7 @@ const TodoList = () => {
   const page = pages[activePageNumber - 1];
 
   const list = (
-    <>
+    <div className='main-board'>
       <FilterPanel />
       <OutputToggle />
       <ul>
@@ -64,7 +67,7 @@ const TodoList = () => {
         {activePageNumber === pages.length ? <p className='task-card-element'>Конец списка</p> : null}
       </ul>
       {pagination}
-    </>
+    </div>
   );
 
   return list;
