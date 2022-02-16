@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useFilter from '../hooks/index.jsx';
+import { selectTasks } from '../features/tasksSlice';
 import { changePage, selectActivePage, selectOutputOrder } from '../features/uiStateSlice';
 import Pagination from 'react-bootstrap/Pagination';
 import paginator from '../utilities/paginator.js';
@@ -11,17 +12,17 @@ import Task from './Task.jsx';
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const outputOrder = useSelector(selectOutputOrder);
 
+  const taskDatabase = useSelector(selectTasks);
   const filteredTasks = useFilter();
+  const outputOrder = useSelector(selectOutputOrder);
   const tasks = tasksSorter(filteredTasks, outputOrder);
 
   const activePageNumber = useSelector(selectActivePage);
 
-  if (tasks.length === 0) {
+  if (taskDatabase.length === 0) {
     return (
       <div>
-        <FilterPanel />
         <p>Задачи отсутствуют</p>
       </div>
     );
