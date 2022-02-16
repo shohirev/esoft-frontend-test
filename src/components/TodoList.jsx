@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTasks } from '../features/tasksSlice';
+import useFilter from '../hooks/index.jsx';
+//import { selectTasks } from '../features/tasksSlice';
 import { changePage, selectActivePage, selectOutputOrder } from '../features/uiStateSlice';
 import Pagination from 'react-bootstrap/Pagination';
 import paginator from '../utilities/paginator.js';
@@ -10,9 +11,11 @@ import Task from './Task.jsx';
 
 const TodoList = () => {
   const dispatch = useDispatch();
-  const tasksDatabase = useSelector(selectTasks);
+  //const tasksDatabase = useSelector(selectTasks);
   const outputOrder = useSelector(selectOutputOrder);
-  const tasks = tasksSorter(tasksDatabase, outputOrder);
+
+  const filteredTasks = useFilter();
+  const tasks = tasksSorter(filteredTasks, outputOrder);
 
   const activePageNumber = useSelector(selectActivePage);
 
